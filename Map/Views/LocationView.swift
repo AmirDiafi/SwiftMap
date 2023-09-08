@@ -21,6 +21,21 @@ struct LocationView: View {
                 header
                     .padding()
                 Spacer()
+                ZStack {
+                    ForEach(vm.locations) {location in
+                        if vm.selectedLocation == location {
+                            LocationCard(location: location)
+                                .shadow(color: Color.black.opacity(0.12), radius: 30)
+                                .transition(
+                                    .asymmetric(
+                                        insertion: .move(edge: .trailing),
+                                        removal: .move(edge: .leading)
+                                    )
+                                )
+                        }
+                    }
+                }
+                .padding()
             }
         }
     }

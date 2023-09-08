@@ -15,6 +15,7 @@
 		04DB9E562A5B05E000131B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DB9E552A5B05E000131B99 /* Assets.xcassets */; };
 		04DB9E582A5B06EE00131B99 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB9E572A5B06EE00131B99 /* LocationView.swift */; };
 		04DB9E5A2A5B0D1E00131B99 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB9E592A5B0D1E00131B99 /* LocationViewModel.swift */; };
+		04F3DEAE2AABD80500C5B62F /* LocationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DEAD2AABD80500C5B62F /* LocationCard.swift */; };
 		04FB6A1D2A5B029A0010D0E1 /* LocationsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB6A1C2A5B029A0010D0E1 /* LocationsDataService.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		04DB9E552A5B05E000131B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04DB9E572A5B06EE00131B99 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		04DB9E592A5B0D1E00131B99 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		04F3DEAD2AABD80500C5B62F /* LocationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCard.swift; sourceTree = "<group>"; };
 		04FB6A1C2A5B029A0010D0E1 /* LocationsDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 			children = (
 				04DB9E572A5B06EE00131B99 /* LocationView.swift */,
 				0469A0122AAA70BB002B8AD9 /* PlacesList.swift */,
+				04F3DEAD2AABD80500C5B62F /* LocationCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F3DEAE2AABD80500C5B62F /* LocationCard.swift in Sources */,
 				048053462A5A01E50016769E /* ContentView.swift in Sources */,
 				04DB9E5A2A5B0D1E00131B99 /* LocationViewModel.swift in Sources */,
 				048053442A5A01E50016769E /* MapApp.swift in Sources */,
