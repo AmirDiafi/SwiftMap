@@ -9,7 +9,8 @@ import SwiftUI
 
 struct LocationCard: View {
     let location: Location
-    
+    @EnvironmentObject private var vm: LocationViewModel
+
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
             VStack(alignment: .leading, spacing: 25) {
@@ -51,9 +52,9 @@ struct LocationCard: View {
                 .buttonStyle(.borderedProminent)
                 
                 Button {
-                    
+                    vm.onNextLocation()
                 } label: {
-                    Text("Learn more")
+                    Text("Next")
                         .font(.headline)
                         .frame(width: 125, height: 35)
                 }
@@ -75,6 +76,7 @@ struct LocationCard: View {
 struct LocationCard_Previews: PreviewProvider {
     static var previews: some View {
         LocationCard(location: LocationViewModel().locations.first!)
+            .environmentObject(LocationViewModel())
             .padding()
     }
 }

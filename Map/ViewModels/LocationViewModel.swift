@@ -37,13 +37,37 @@ class LocationViewModel: ObservableObject {
     func onSelectLocation(location: Location) {
         withAnimation(.easeInOut) {
             selectedLocation = location
-            isShowListOpen.toggle()
+            isShowListOpen = false
         }
     }
     
     func onOpenList() {
         withAnimation(.easeInOut) {
             isShowListOpen.toggle()
+        }
+    }
+    
+    func onNextLocation() {
+        withAnimation(.easeInOut) {
+            isShowListOpen = false
+            print("GOOOO")
+            guard let currentIndex = locations.firstIndex(where: {$0 == selectedLocation}) else {
+                print("no index found")
+                return
+            }
+            
+            let nextIndex = currentIndex + 1
+            print("nextIndex \(nextIndex)")
+
+            guard locations.indices.contains(nextIndex) else {
+                print("no next index found")
+                self.onSelectLocation(location: locations.first!)
+                return
+            }
+
+            let nextLocation = locations[nextIndex]
+            self.onSelectLocation(location: nextLocation)
+
         }
     }
     
