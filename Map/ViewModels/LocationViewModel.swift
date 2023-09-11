@@ -20,6 +20,7 @@ class LocationViewModel: ObservableObject {
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion()
     let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     @Published var isShowListOpen = false
+    @Published var sheetLocation: Location? = nil
     
     init() {
         let locations = LocationsDataService.locations
@@ -50,15 +51,12 @@ class LocationViewModel: ObservableObject {
     func onNextLocation() {
         withAnimation(.easeInOut) {
             isShowListOpen = false
-            print("GOOOO")
             guard let currentIndex = locations.firstIndex(where: {$0 == selectedLocation}) else {
                 print("no index found")
                 return
             }
             
             let nextIndex = currentIndex + 1
-            print("nextIndex \(nextIndex)")
-
             guard locations.indices.contains(nextIndex) else {
                 print("no next index found")
                 self.onSelectLocation(location: locations.first!)

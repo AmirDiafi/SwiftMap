@@ -14,29 +14,17 @@ struct LocationView: View {
     
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $vm.mapRegion)
-                .ignoresSafeArea(.all)
-            
+            mapLayer.ignoresSafeArea(.all)
             VStack {
                 header
                     .padding()
                 Spacer()
-                ZStack {
-                    ForEach(vm.locations) {location in
-                        if vm.selectedLocation == location {
-                            LocationCard(location: location)
-                                .shadow(color: Color.black.opacity(0.12), radius: 30)
-                                .transition(
-                                    .asymmetric(
-                                        insertion: .move(edge: .trailing),
-                                        removal: .move(edge: .leading)
-                                    )
-                                )
-                        }
-                    }
-                }
+                    cards
                 .padding()
             }
+        }
+        .sheet(item: $vm.sheetLocation) { location in
+            LocationDetail(location: location)
         }
     }
 }
@@ -49,7 +37,7 @@ struct LocationView_Previews: PreviewProvider {
 }
 
 extension LocationView {
-    private var header:  some View {
+    private var header: some View {
         VStack(spacing: 0) {
             Button {
                 vm.onOpenList()
@@ -77,5 +65,36 @@ extension LocationView {
         .background(.thinMaterial)
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.3), radius: 20, x: 20, y: 20)
+    }
+    private var mapLayer: some View {
+        Map(coordinateRegion: $vm.mapRegion,
+            annotationItems: vm.locations,
+            annotationContent: { location in
+            MapAnnotation(coordinate: location.coordinates) {
+                CustomMarker()
+                    .scaleEffect(vm.selectedLocation == location ? 1 : 0.7)
+                    .shadow(radius: 10)
+                    .onTapGesture {
+                        vm.onSelectLocation(location: location)
+                    }
+                    
+            }
+        })
+    }
+    private var cards: some View {
+        ZStack {
+            ForEach(vm.locations) {location in
+                if vm.selectedLocation == location {
+                    LocationCard(location: location)
+                        .shadow(color: Color.black.opacity(0.12), radius: 30)
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .trailing),
+                                removal: .move(edge: .leading)
+                            )
+                        )
+                }
+            }
+        }
     }
 }

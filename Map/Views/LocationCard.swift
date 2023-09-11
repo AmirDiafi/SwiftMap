@@ -43,7 +43,7 @@ struct LocationCard: View {
 
             VStack {
                 Button {
-                    
+                    vm.sheetLocation = location
                 } label: {
                     Text("Learn more")
                         .font(.headline)
