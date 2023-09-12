@@ -11,13 +11,14 @@ import MapKit
 
 struct LocationView: View {
     @EnvironmentObject private var vm: LocationViewModel
-    
+    let maxWidthForIPad = CGFloat(700)
     var body: some View {
         ZStack {
             mapLayer.ignoresSafeArea(.all)
             VStack {
                 header
                     .padding()
+                    .frame(maxWidth: maxWidthForIPad)
                 Spacer()
                     cards
                 .padding()
@@ -86,7 +87,9 @@ extension LocationView {
             ForEach(vm.locations) {location in
                 if vm.selectedLocation == location {
                     LocationCard(location: location)
+                        .frame(maxWidth: maxWidthForIPad)
                         .shadow(color: Color.black.opacity(0.12), radius: 30)
+                        .frame(maxWidth: .infinity)
                         .transition(
                             .asymmetric(
                                 insertion: .move(edge: .trailing),
